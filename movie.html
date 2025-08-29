@@ -2,20 +2,35 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Movie Details</title>
+  <title>Movie Detail</title>
   <link rel="stylesheet" href="style.css">
 </head>
-<body> 
+<body>
   <div id="movie-detail"></div>
-  <div id="banner-ad"></div>
-
-  <script src="movies.json"></script>
-  <script src="ads-config.js"></script>
-  <script src="ads-loader.js"></script>
-  <script src="app.js"></script>
   <script>
-    loadMovieDetail();
+    async function loadMovie() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const id = urlParams.get("id");
+
+      const res = await fetch("movies.json");
+      const movies = await res.json();
+      const movie = movies.find(m => m.id === id);
+
+      if (movie) {
+        document.getElementById("movie-detail").innerHTML = `
+          <h1>${movie.title} (${movie.year})</h1>
+          <img src="${movie.poster}" width="200">
+          <p><b>Genre:</b> ${movie.genre}</p>
+          <p>${movie.description}</p>
+          <a href="${movie.link}" target="_blank">
+            <button>Download</button>
+          </a>
+        `;
+      } else {
+        document.getElementById("movie-detail").innerHTML = "<p>Movie not found.</p>";
+      }
+    }
+    loadMovie();
   </script>
 </body>
 </html>
