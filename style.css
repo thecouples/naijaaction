@@ -1,48 +1,35 @@
 body {
   font-family: Arial, sans-serif;
-  margin: 0;
-  background: #111;
-  color: #fff;
+  max-width: 800px;
+  margin: auto;
+  padding: 20px;
 }
-header {
-  padding: 15px;
-  background: #222;
-  text-align: center;
+
+#movies {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 15px;
+  margin-top: 20px;
 }
-#search {
-  width: 80%;
-  padding: 10px;
-  margin-top: 10px;
-}
-nav {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin: 10px;
-}
-nav button {
-  margin: 2px;
-  padding: 5px 10px;
-}
+
 .movie-card {
-  display: inline-block;
-  width: 180px;
-  margin: 10px;
-  background: #222;
+  border: 1px solid #ddd;
+  border-radius: 8px;
   padding: 10px;
-  border-radius: 5px;
   text-align: center;
+  background: #fafafa;
 }
+
 .movie-card img {
   width: 100%;
-  border-radius: 5px;
+  border-radius: 6px;
 }
-.download-btn {
-  display: inline-block;
-  margin-top: 15px;
-  padding: 10px;
-  background: red;
-  color: white;
-  text-decoration: none;
-  border-radius: 5px;
+
+#alphabet {
+  margin-top: 10px;
+}
+
+#alphabet button {
+  margin: 2px;
+  padding: 5px 10px;
 }
